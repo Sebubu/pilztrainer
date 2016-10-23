@@ -1,6 +1,5 @@
 h5py==2.6.0
 Keras==1.1.0
-KerasModelZoo==0.0.1
 numpy==1.11.2
 progressbar2==3.10.1
 python-utils==2.0.0
