@@ -9,7 +9,7 @@ class FeatureLoadTest(unittest.TestCase):
         self.assertIsNotNone(features)
 
     def test_define_y(self):
-        path = "train/"
+        path = "../../pilz-scrapper/target/train"
         dict = FeatureLoad.define_y(path)
         FeatureLoad.save_y_dict(path)
         loaded_dict = FeatureLoad.load_y_dict(path)

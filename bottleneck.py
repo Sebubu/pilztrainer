@@ -5,11 +5,15 @@ import numpy as np
 from os import listdir
 from os.path import isdir, join, isfile
 import datetime
+from PIL import Image, ImageOps
+
 
 
 
 def load_image(path="7.jpg"):
-    img = image.load_img(path, target_size=(224, 224))
+    img = Image.open(path)
+    img = img.convert('RGB')
+    img = ImageOps.fit(img, (224,224), Image.ANTIALIAS)
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)
@@ -50,5 +54,5 @@ def save_bottlenecks(path):
 train_data_dir = '../pilz-scrapper/target/train'
 validation_data_dir = '../pilz-scrapper/target/test'
 
-save_bottlenecks(validation_data_dir)
-save_bottlenecks(train_data_dir)
+#save_bottlenecks(validation_data_dir)
+#save_bottlenecks(train_data_dir)
