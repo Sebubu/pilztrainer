@@ -12,8 +12,8 @@ from keras.models import Model
 resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
 print("loaded Resnet")
 
-train_data_dir = '../pilz-scrapper/resized/train'
-test_data_dir = '../pilz-scrapper/resized/test'
+train_data_dir = 'resized/train'
+test_data_dir = 'resized/test'
 image_size = (224,224)
 shift=0.2
 train_datagen = ImageDataGenerator(
@@ -41,18 +41,17 @@ validation_generator = test_datagen.flow_from_directory(
         batch_size=32,
         class_mode='binary')
 
+class_dictionary = validation_generator.class_indices
+print(class_dictionary)
+
 nb_categories = 208
 
 x = resnet.output
-print(x._keras_shape)
 x = GlobalAveragePooling2D()(x)
-print(x._keras_shape)
 x = Dense(512)(x)
-print(x._keras_shape)
 x = LeakyReLU()(x)
 x = Dropout(0.6)(x)
 predictions = Dense(nb_categories, activation='sigmoid')(x)
-print(predictions._keras_shape)
 model = Model(input=resnet.input, output=predictions)
 
 for layer in resnet.layers:
