@@ -33,13 +33,13 @@ train_generator = train_datagen.flow_from_directory(
         train_data_dir,
         target_size=image_size,
         batch_size=32,
-        class_mode='binary')
+        class_mode='categorical')
 
 validation_generator = test_datagen.flow_from_directory(
         test_data_dir,
         target_size=image_size,
         batch_size=32,
-        class_mode='binary')
+        class_mode='categorical')
 
 class_dictionary = validation_generator.class_indices
 print(class_dictionary)
@@ -57,7 +57,7 @@ model = Model(input=resnet.input, output=predictions)
 for layer in resnet.layers:
     layer.trainable = False
 
-model.compile(loss='sparse_categorical_crossentropy',
+model.compile(loss='categorical_crossentropy',
               optimizer='adadelta',
               metrics=['accuracy'])
 print("Compiled")
