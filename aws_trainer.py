@@ -12,8 +12,8 @@ from keras.models import Model
 resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
 print("loaded Resnet")
 
-train_data_dir = 'resized/train'
-test_data_dir = 'resized/test'
+train_data_dir = '/home/severin/Downloads/mushroom_dataset/train'
+test_data_dir = '/home/severin/Downloads/mushroom_dataset/test'
 image_size = (224,224)
 shift=0.2
 train_datagen = ImageDataGenerator(
@@ -67,4 +67,4 @@ callbacks = [ModelCheckpoint("weights/weight{epoch:02d}-{val_loss:.2f}.hdf5", mo
             EarlyStopping(monitor='val_loss', patience=10, verbose=0, mode='auto')
             ]
 
-model.fit_generator(train_generator, validation_data=validation_generator, samples_per_epoch=32,nb_epoch=200,callbacks=callbacks, nb_val_samples=1969)
+model.fit_generator(train_generator, validation_data=validation_generator, samples_per_epoch=32,nb_epoch=200,callbacks=callbacks, nb_val_samples=33920)
