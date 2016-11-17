@@ -14,8 +14,8 @@ resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shap
 print("loaded Resnet")
 
 batch_size = 128
-train_data_dir = '/home/ubuntu/pilztrainer-aws/mushroom_dataset/train'
-test_data_dir = '/home/ubuntu/pilztrainer-aws/mushroom_dataset/test'
+train_data_dir = '/home/ubuntu/mushroom_dataset/train'
+test_data_dir = '/home/ubuntu/mushroom_dataset/test'
 image_size = (224,224)
 shift=0.2
 train_datagen = ImageDataGenerator(
