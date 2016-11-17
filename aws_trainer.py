@@ -1,5 +1,5 @@
 from keras.applications.resnet50 import ResNet50
-from keras.layers import Dense, GlobalAveragePooling2D
+from keras.layers import Dense, GlobalAveragePooling2D, Dropout
 from keras.layers import Input
 from keras.layers.advanced_activations import LeakyReLU
 from keras.preprocessing.image import ImageDataGenerator
@@ -49,14 +49,14 @@ x = resnet.output
 x = GlobalAveragePooling2D()(x)
 x = Dense(2048)(x)
 x = LeakyReLU()(x)
-#x = Dropout(0.1)(x)
+x = Dropout(0.5)(x)
 predictions = Dense(nb_categories, activation='sigmoid')(x)
 model = Model(input=resnet.input, output=predictions)
 
 for layer in resnet.layers:
     layer.trainable = False
 
-model.compile(loss='categorical_crossentropy',
+model.compile(loss='binary_crossentropy',
               optimizer='adadelta',
               metrics=['accuracy'])
 print("Compiled")
