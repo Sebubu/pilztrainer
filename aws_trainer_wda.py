@@ -1,5 +1,5 @@
 from keras.applications.resnet50 import ResNet50
-from keras.layers import Dense, GlobalAveragePooling2D
+from keras.layers import Dense, GlobalAveragePooling2D, Dropout
 from keras.layers import Input
 from keras.layers.advanced_activations import LeakyReLU
 from keras.preprocessing.image import ImageDataGenerator
@@ -23,13 +23,13 @@ train_generator = train_datagen.flow_from_directory(
         train_data_dir,
         target_size=image_size,
         batch_size=batch_size,
-        class_mode='categorical')
+        class_mode='sparse')
 
 validation_generator = test_datagen.flow_from_directory(
         test_data_dir,
         target_size=image_size,
         batch_size=batch_size,
-        class_mode='categorical')
+        class_mode='sparse')
 
 class_dictionary = validation_generator.class_indices
 print(class_dictionary)
@@ -40,15 +40,16 @@ x = resnet.output
 x = GlobalAveragePooling2D()(x)
 x = Dense(2048)(x)
 x = LeakyReLU()(x)
-#x = Dropout(0.1)(x)
+#x = Dropout(0.5)(x)
 predictions = Dense(nb_categories, activation='sigmoid')(x)
 model = Model(input=resnet.input, output=predictions)
 
 for layer in resnet.layers:
     layer.trainable = False
 
-model.compile(loss='binary_crossentropy',
-              optimizer='adadelta',
+from keras.optimizers import Adadelta
+model.compile(loss='sparse_categorical_crossentropy',
+              optimizer=Adadelta(lr=0.1),
               metrics=['accuracy'])
 print("Compiled")
 
@@ -59,14 +60,16 @@ def printen(titel, result):
 
 loss = 100
 for i in range(0, 500):
-    print()
     print("Epoche " + str(i) + " " + str(datetime.now()))
     x_train, y_train = train_generator.next()
     x_test, y_test = validation_generator.next()
+    print(x_train.shape)
     train_results = model.train_on_batch(x_train, y_train)
     printen("train", train_results)
+
     test = model.test_on_batch(x_test, y_test)
     printen("test", test)
+
     test_loss = test[0]
     if loss > test_loss:
         print("\tsave model...")
