@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ced99526-bc75-4153-8e6f-20b8866ba41c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aws_trainer.py" afterPath="$PROJECT_DIR$/aws_trainer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aws_trainer_wda.py" afterPath="$PROJECT_DIR$/aws_trainer_wda.py" />
     </list>
     <ignored path="pilztrainer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,11 +41,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="aws_trainer.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="aws_trainer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aws_trainer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="208">
+              <caret line="69" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="81" selection-end-column="86" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -52,12 +53,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aws_trainer_wda.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="aws_trainer_wda.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aws_trainer_wda.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-              <folding />
+            <state relative-caret-position="253">
+              <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -104,8 +107,8 @@
         <option value="$PROJECT_DIR$/mushsetLoad.sh" />
         <option value="$PROJECT_DIR$/DataAugumentation.py" />
         <option value="$PROJECT_DIR$/aws_trainer_without_da.py" />
-        <option value="$PROJECT_DIR$/aws_trainer_wda.py" />
         <option value="$PROJECT_DIR$/aws_trainer.py" />
+        <option value="$PROJECT_DIR$/aws_trainer_wda.py" />
       </list>
     </option>
   </component>
@@ -949,18 +952,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aws_trainer_wda.py">
+    <entry file="file://$PROJECT_DIR$/aws_trainer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-          <folding />
+        <state relative-caret-position="208">
+          <caret line="69" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="81" selection-end-column="86" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aws_trainer.py">
+    <entry file="file://$PROJECT_DIR$/aws_trainer_wda.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="253">
+          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>

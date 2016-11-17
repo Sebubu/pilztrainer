@@ -1,8 +1,5 @@
 from keras.applications.resnet50 import ResNet50
-from keras.layers import Activation, Dropout, Flatten, Dense, GlobalAveragePooling2D, BatchNormalization
-from keras.callbacks import ModelCheckpoint, EarlyStopping
-from keras.models import Sequential
-from FeatureLoad import load_dataset
+from keras.layers import Dense, GlobalAveragePooling2D
 from keras.layers import Input
 from keras.layers.advanced_activations import LeakyReLU
 from keras.preprocessing.image import ImageDataGenerator
