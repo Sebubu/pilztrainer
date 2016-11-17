@@ -56,8 +56,9 @@ model = Model(input=resnet.input, output=predictions)
 for layer in resnet.layers:
     layer.trainable = False
 
+from keras.optimizers import Adadelta
 model.compile(loss='sparse_categorical_crossentropy',
-              optimizer='adadelta',
+              optimizer=Adadelta(lr=0.1),
               metrics=['accuracy'])
 print("Compiled")
 
