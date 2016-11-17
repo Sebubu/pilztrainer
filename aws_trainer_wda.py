@@ -47,7 +47,7 @@ model = Model(input=resnet.input, output=predictions)
 for layer in resnet.layers:
     layer.trainable = False
 
-model.compile(loss='categorical_crossentropy',
+model.compile(loss='binary_crossentropy',
               optimizer='adadelta',
               metrics=['accuracy'])
 print("Compiled")
@@ -59,6 +59,7 @@ def printen(titel, result):
 
 loss = 100
 for i in range(0, 500):
+    print()
     print("Epoche " + str(i) + " " + str(datetime.now()))
     x_train, y_train = train_generator.next()
     x_test, y_test = validation_generator.next()
