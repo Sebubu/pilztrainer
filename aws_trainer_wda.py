@@ -7,7 +7,6 @@ from keras.layers import Input
 from keras.layers.advanced_activations import LeakyReLU
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Model
-from datetime import datetime
 
 
 resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
@@ -17,29 +16,20 @@ train_data_dir = '/home/severin/PycharmProjects/pilztrainer/mushroom_dataset/tra
 test_data_dir = '/home/severin/PycharmProjects/pilztrainer/mushroom_dataset/test'
 image_size = (224,224)
 shift=0.2
-train_datagen = ImageDataGenerator(
-    rescale=1. / 255,
-    shear_range=0.2,
-    zoom_range=0.2,
-    horizontal_flip=True,
-    vertical_flip=True,
-    rotation_range=90,
-    width_shift_range=shift,
-    height_shift_range=shift
-)
+train_datagen = ImageDataGenerator(rescale=1./255)
 
 test_datagen = ImageDataGenerator(rescale=1./255)
 
 train_generator = train_datagen.flow_from_directory(
         train_data_dir,
         target_size=image_size,
-        batch_size=128,
+        batch_size=64,
         class_mode='categorical')
 
 validation_generator = test_datagen.flow_from_directory(
         test_data_dir,
         target_size=image_size,
-        batch_size=128,
+        batch_size=16,
         class_mode='categorical')
 
 class_dictionary = validation_generator.class_indices
@@ -63,10 +53,14 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy'])
 print("Compiled")
 
+callbacks = [ModelCheckpoint("weights/weight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=0,
+                           save_best_only=True, save_weights_only=False, mode='auto'),
+            EarlyStopping(monitor='val_loss', patience=10, verbose=0, mode='auto')
+            ]
 for i in range(0, 500):
-    print("Epoche " + str(i))
+    print(i)
     x_train, y_train = train_generator.next()
     x_test, y_test = validation_generator.next()
     print('\ttrain ' + str(model.train_on_batch(x_train, y_train)))
     print('\ttest' + str(model.test_on_batch(x_test, y_test)))
-    model.save_weights('my_model_weights' + str(i) + '.hdf5')
+    #model.fit_generator(train_generator, validation_data=validation_generator, samples_per_epoch=32,nb_epoch=200,callbacks=callbacks, nb_val_samples=33920)
