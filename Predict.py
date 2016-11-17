@@ -48,6 +48,8 @@ for key in class_dictionary.keys():
     value = class_dictionary[key]
     lookupdict[value] = key
 
+print(lookupdict[367])
+
 nb_categories = 1510
 
 x = resnet.output
@@ -87,5 +89,6 @@ for i in range(0, len(out)):
 print(highest)
 print(highest_val)
 print(lookupdict[highest])
+
 
 

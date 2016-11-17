@@ -10,7 +10,7 @@ from datetime import datetime
 resnet = ResNet50(include_top=False, weights=None, input_tensor=Input(shape=(3, 224, 224)))
 print("loaded Resnet")
 
-batch_size = 128
+batch_size = 132
 train_data_dir = '/home/ubuntu/mushroom_dataset/train'
 test_data_dir = '/home/ubuntu/mushroom_dataset/test'
 image_size = (224,224)
@@ -63,7 +63,7 @@ for i in range(0, 500):
     print("Epoche " + str(i) + " " + str(datetime.now()))
     x_train, y_train = train_generator.next()
     x_test, y_test = validation_generator.next()
-    print(x_train.shape)
+
     train_results = model.train_on_batch(x_train, y_train)
     printen("train", train_results)
 
