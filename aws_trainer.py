@@ -14,8 +14,8 @@ resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shap
 print("loaded Resnet")
 
 batch_size = 128
-train_data_dir = '/home/severin/PycharmProjects/pilztrainer/mushroom_dataset/train'
-test_data_dir = '/home/severin/PycharmProjects/pilztrainer/mushroom_dataset/test'
+train_data_dir = '/home/ubuntu/pilztrainer-aws/mushroom_dataset/train'
+test_data_dir = '/home/ubuntu/pilztrainer-aws/mushroom_dataset/test'
 image_size = (224,224)
 shift=0.2
 train_datagen = ImageDataGenerator(
@@ -52,7 +52,7 @@ x = resnet.output
 x = GlobalAveragePooling2D()(x)
 x = Dense(2048)(x)
 x = LeakyReLU()(x)
-x = Dropout(0.5)(x)
+#x = Dropout(0.1)(x)
 predictions = Dense(nb_categories, activation='sigmoid')(x)
 model = Model(input=resnet.input, output=predictions)
 
@@ -71,7 +71,7 @@ def printen(titel, result):
 
 loss = 100
 for i in range(0, 500):
-    print("Epoche " + str(i))
+    print("Epoche " + str(i) + " " + str(datetime.now()))
     x_train, y_train = train_generator.next()
     x_test, y_test = validation_generator.next()
     train_results = model.train_on_batch(x_train, y_train)
