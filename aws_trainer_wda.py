@@ -49,7 +49,7 @@ for layer in resnet.layers:
 
 from keras.optimizers import Adadelta
 model.compile(loss='sparse_categorical_crossentropy',
-              optimizer=Adadelta(lr=0.1),
+              optimizer=Adadelta(lr=0.01),
               metrics=['accuracy'])
 print("Compiled")
 
