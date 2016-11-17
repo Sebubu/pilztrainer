@@ -7,7 +7,7 @@ from keras.models import Model
 from datetime import datetime
 
 
-resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
+resnet = ResNet50(include_top=False, weights=None, input_tensor=Input(shape=(3, 224, 224)))
 print("loaded Resnet")
 
 batch_size = 128
@@ -44,12 +44,12 @@ x = LeakyReLU()(x)
 predictions = Dense(nb_categories, activation='sigmoid')(x)
 model = Model(input=resnet.input, output=predictions)
 
-for layer in resnet.layers:
-    layer.trainable = False
+#for layer in resnet.layers:
+#    layer.trainable = False
 
 from keras.optimizers import Adadelta
 model.compile(loss='sparse_categorical_crossentropy',
-              optimizer=Adadelta(lr=0.01),
+              optimizer=Adadelta(),
               metrics=['accuracy'])
 print("Compiled")
 
