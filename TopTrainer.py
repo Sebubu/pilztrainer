@@ -22,6 +22,7 @@ x = BatchNormalization()(x)
 predictions = Dense(y_batch.shape[1], activation='softmax')(x)
 model = Model(input=inputs, output=predictions)
 
+print('compile')
 model.compile(optimizer='rmsprop',
               loss='categorical_crossentropy',
               metrics=['accuracy'])
@@ -31,4 +32,5 @@ callbacks = [ModelCheckpoint("weights/weight{epoch:02d}-{val_loss:.2f}.hdf5", mo
             EarlyStopping(monitor='val_loss', patience=10, verbose=0, mode='auto')
             ]
 
-model.fit(x_batch, y_batch, batch_size=512, nb_epoch=100,validation_split=0.1)
+print('fit')
+model.fit(x_batch, y_batch, batch_size=8192, nb_epoch=100,validation_split=0.1)
