@@ -10,7 +10,7 @@ def load(dir='bottleneck2/'):
     files = sorted(files)
     count = len(files)
     for i, file in enumerate(files):
-        print((i/count)*100)
+        print((float(i/count))*100)
         is_x = file.startswith('x')
         path = join(dir, file)
         arr = np.load(path)
