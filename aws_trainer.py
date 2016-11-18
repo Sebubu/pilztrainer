@@ -76,7 +76,7 @@ for layer in resnet.layers:
 
 
 model.compile(loss='categorical_crossentropy',
-              optimizer='adadelta',
+              optimizer='rmsprop',
               metrics=['accuracy'])
 print("Compiled")
 
@@ -88,7 +88,7 @@ def printen(titel, result):
 
 loss = 100
 for i in range(0, 500):
-    print()
+    print('')
     start = datetime.now()
     print("Epoche " + str(i))
     x_train, y_train = train_generator.next()
@@ -99,6 +99,7 @@ for i in range(0, 500):
 
     test = model.test_on_batch(x_test, y_test)
     printen("test", test)
+
     end = datetime.now()
     eta = end-start
     print("\t" + str(eta.seconds) + " seconds")
