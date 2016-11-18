@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ced99526-bc75-4153-8e6f-20b8866ba41c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/BottleneckBig.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bottleneck/test.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aws_trainer.py" afterPath="$PROJECT_DIR$/aws_trainer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aws_trainer_wda.py" afterPath="$PROJECT_DIR$/aws_trainer_wda.py" />
     </list>
     <ignored path="pilztrainer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,11 +44,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="aws_trainer.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="aws_trainer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aws_trainer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+            <state relative-caret-position="269">
+              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="97" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BottleneckBig.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/BottleneckBig.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="314">
+              <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -77,8 +93,8 @@
       <file leaf-file-name="aws_trainer_wda.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aws_trainer_wda.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="13" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+            <state relative-caret-position="396">
+              <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="108" selection-end-column="87" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -131,6 +147,7 @@
         <option value="$PROJECT_DIR$/Predict.py" />
         <option value="$PROJECT_DIR$/aws_trainer_wda.py" />
         <option value="$PROJECT_DIR$/aws_trainer.py" />
+        <option value="$PROJECT_DIR$/BottleneckBig.py" />
       </list>
     </option>
   </component>
@@ -214,6 +231,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pilztrainer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pilztrainer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bottleneck" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -550,7 +581,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33707866" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12109863" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -598,23 +629,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/FeatureLoad_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="6" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#48#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Prediction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -958,8 +972,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/aws_trainer_wda.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="13" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+        <state relative-caret-position="396">
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="108" selection-end-column="87" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
@@ -968,8 +982,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/aws_trainer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+        <state relative-caret-position="269">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="97" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bottleneck/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BottleneckBig.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>

@@ -1,5 +1,5 @@
 from keras.applications.resnet50 import ResNet50
-from keras.layers import Dense, GlobalAveragePooling2D, Dropout
+from keras.layers import Dense, GlobalAveragePooling2D, Dropout, BatchNormalization
 from keras.layers import Input
 from keras.layers.advanced_activations import LeakyReLU
 from keras.preprocessing.image import ImageDataGenerator
@@ -64,12 +64,13 @@ nb_categories = 1510
 
 x = resnet.output
 x = GlobalAveragePooling2D()(x)
+x = BatchNormalization()(x)
 x = Dense(2048)(x)
 x = LeakyReLU()(x)
-x = Dropout(0.5)(x)
+x = BatchNormalization()(x)
 x = Dense(2048)(x)
 x = LeakyReLU()(x)
-x = Dropout(0.5)(x)
+x = BatchNormalization()(x)
 predictions = Dense(nb_categories, activation='softmax')(x)
 model = Model(input=resnet.input, output=predictions)
 
@@ -110,6 +111,10 @@ for i in range(0, 500):
     if loss > test_loss:
         print("\tsave model...")
         loss = test_loss
+        model.save_weights('weights/weights' + str(i) + 'l' + str(test_loss) + '.hdf5')
+
+    if i % 20 == 0:
+        print("\tsave model after 20 epoches...")
         model.save_weights('weights/weights' + str(i) + 'l' + str(test_loss) + '.hdf5')
 
 model.save_weights('weights/weights500Finito.hdf5')
