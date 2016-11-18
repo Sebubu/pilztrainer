@@ -47,7 +47,7 @@ validation_generator = test_datagen.flow_from_directory(
     class_mode='categorical')
 
 class_dictionary = validation_generator.class_indices
-print(class_dictionary)
+#print(class_dictionary)
 
 nb_categories = 1510
 
@@ -63,7 +63,7 @@ model = Model(input=resnet.input, output=predictions)
 
 for layer in resnet.layers:
     layer.trainable = False
-    print(layer.name)
+
 
 
 from keras.optimizers import RMSprop
@@ -81,7 +81,8 @@ def printen(titel, result):
 loss = 100
 for i in range(0, 500):
     print()
-    print("Epoche " + str(i) + " " + str(datetime.now()))
+    start = datetime.now()
+    print("Epoche " + str(i) + " " + str(start))
     x_train, y_train = train_generator.next()
     x_test, y_test = validation_generator.next()
 
@@ -90,6 +91,9 @@ for i in range(0, 500):
 
     test = model.test_on_batch(x_test, y_test)
     printen("test", test)
+    end = datetime.now()
+    eta = end-start
+    print(str(eta.seconds) + " seconds")
 
     test_loss = test[0]
     if loss > test_loss:
