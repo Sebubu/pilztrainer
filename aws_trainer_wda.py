@@ -68,7 +68,7 @@ for layer in resnet.layers:
 
 from keras.optimizers import RMSprop
 model.compile(loss='categorical_crossentropy',
-              optimizer=RMSprop(lr=0.0001),
+              optimizer='adadelta',
               metrics=['accuracy'])
 print("Compiled")
 
@@ -82,7 +82,7 @@ loss = 100
 for i in range(0, 500):
     print()
     start = datetime.now()
-    print("Epoche " + str(i) + " " + str(start))
+    print("Epoche " + str(i))
     x_train, y_train = train_generator.next()
     x_test, y_test = validation_generator.next()
 
@@ -93,7 +93,7 @@ for i in range(0, 500):
     printen("test", test)
     end = datetime.now()
     eta = end-start
-    print(str(eta.seconds) + " seconds")
+    print("\t" + str(eta.seconds) + " seconds")
 
     test_loss = test[0]
     if loss > test_loss:
