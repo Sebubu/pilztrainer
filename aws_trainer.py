@@ -74,9 +74,9 @@ model = Model(input=resnet.input, output=predictions)
 for layer in resnet.layers:
     layer.trainable = False
 
-
+from keras.optimizers import RMSprop
 model.compile(loss='categorical_crossentropy',
-              optimizer='rmsprop',
+              optimizer=RMSprop(lr=0.0001),
               metrics=['accuracy'])
 print("Compiled")
 
