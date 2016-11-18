@@ -13,8 +13,8 @@ def get_username():
     return pwd.getpwuid(os.getuid())[0]
 
 
-#resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
-whole_resnet = ResNet50(include_top=False, weights=None, input_tensor=Input(shape=(3, 224, 224)))
+resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
+whole_resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
 resnet = Model(input=whole_resnet.input, output=whole_resnet .get_layer('activation_46').output)
 print("loaded Resnet")
 

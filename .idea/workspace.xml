@@ -43,8 +43,8 @@
       <file leaf-file-name="aws_trainer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/aws_trainer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="76" column="36" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="36" />
+            <state relative-caret-position="180">
+              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -968,8 +968,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/aws_trainer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="76" column="36" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="36" />
+        <state relative-caret-position="180">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
