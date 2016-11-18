@@ -13,13 +13,13 @@ def get_username():
     return pwd.getpwuid(os.getuid())[0]
 
 
-resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
-#whole_resnet = ResNet50(include_top=False, weights=None, input_tensor=Input(shape=(3, 224, 224)))
-#resnet = Model(input=whole_resnet.input, output=whole_resnet .get_layer('activation_46').output)
+#resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
+whole_resnet = ResNet50(include_top=False, weights=None, input_tensor=Input(shape=(3, 224, 224)))
+resnet = Model(input=whole_resnet.input, output=whole_resnet .get_layer('activation_46').output)
 print("loaded Resnet")
 
-batch_size = 256
-test_batch_size = 64
+batch_size = 512
+test_batch_size = 128
 
 if get_username() == 'severin':
     train_data_dir = '/home/severin/PycharmProjects/pilztrainer/mushroom_dataset/train'
@@ -57,7 +57,6 @@ validation_generator = test_datagen.flow_from_directory(
     class_mode='categorical')
 
 class_dictionary = validation_generator.class_indices
-#print(class_dictionary)
 
 nb_categories = 1510
 
@@ -76,8 +75,6 @@ for layer in resnet.layers:
     layer.trainable = False
 
 
-
-from keras.optimizers import RMSprop
 model.compile(loss='categorical_crossentropy',
               optimizer='adadelta',
               metrics=['accuracy'])
@@ -111,3 +108,5 @@ for i in range(0, 500):
         print("\tsave model...")
         loss = test_loss
         model.save_weights('weights/weights' + str(i) + 'l' + str(test_loss) + '.hdf5')
+
+model.save_weights('weights/weights500Finito.hdf5')
