@@ -89,8 +89,8 @@
       <file leaf-file-name="TopTrainer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TopTrainer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="43" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
+            <state relative-caret-position="375">
+              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -973,8 +973,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TopTrainer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="43" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
+        <state relative-caret-position="375">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>

@@ -23,7 +23,7 @@ predictions = Dense(y_batch.shape[1], activation='softmax')(x)
 model = Model(input=inputs, output=predictions)
 
 print('compile')
-model.compile(optimizer='rmsprop',
+model.compile(optimizer='adadelta',
               loss='categorical_crossentropy',
               metrics=['accuracy'])
 
