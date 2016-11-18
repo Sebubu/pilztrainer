@@ -7,7 +7,7 @@ from keras.models import Model
 from datetime import datetime
 import os
 import pwd
-
+import numpy as np
 
 
 
@@ -64,5 +64,5 @@ for i in range(0,nb_train_data/batch_size):
     x_train, y_train = train_generator.next()
     prediction = resnet.predict(x_train, batch_size)
     name = 'r' + str(run) + "i" + str(i)
-    prediction.save('bottleneck/x' + name + '.npy')
-    y_train.save('bottleneck/y' + name + '.npy')
+    np.save('bottleneck/x' + name + '.npy', prediction)
+    np.save('bottleneck/y' + name + '.npy', y_train)

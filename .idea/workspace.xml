@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ced99526-bc75-4153-8e6f-20b8866ba41c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/BottleneckBig.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bottleneck/test.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aws_trainer.py" afterPath="$PROJECT_DIR$/aws_trainer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/aws_trainer_wda.py" afterPath="$PROJECT_DIR$/aws_trainer_wda.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BottleneckBig.py" afterPath="$PROJECT_DIR$/BottleneckBig.py" />
     </list>
     <ignored path="pilztrainer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,8 +55,8 @@
       <file leaf-file-name="BottleneckBig.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BottleneckBig.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
+            <state relative-caret-position="404">
+              <caret line="55" column="47" selection-start-line="55" selection-start-column="47" selection-end-line="55" selection-end-column="47" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -1000,8 +996,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BottleneckBig.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
+        <state relative-caret-position="404">
+          <caret line="55" column="47" selection-start-line="55" selection-start-column="47" selection-end-line="55" selection-end-column="47" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
