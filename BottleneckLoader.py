@@ -3,7 +3,7 @@ from os import listdir
 from os.path import join
 
 
-def load(dir='bottleneck/'):
+def load(dir='bottleneck2/'):
     x = []
     y = []
     files = listdir(dir)
