@@ -9,13 +9,15 @@ import os
 import pwd
 
 
+
+
 def get_username():
     return pwd.getpwuid(os.getuid())[0]
 
 
 #resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
 whole_resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
-resnet = Model(input=whole_resnet.input, output=whole_resnet .get_layer('activation_46').output)
+resnet = Model(input=whole_resnet.input, output=whole_resnet.get_layer('activation_46').output)
 print("loaded Resnet")
 
 batch_size = 512
@@ -76,7 +78,7 @@ for layer in resnet.layers:
 
 from keras.optimizers import RMSprop
 model.compile(loss='categorical_crossentropy',
-              optimizer=RMSprop(lr=0.0001),
+              optimizer='adadelta',
               metrics=['accuracy'])
 print("Compiled")
 
