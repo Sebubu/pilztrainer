@@ -1,5 +1,5 @@
 from BottleneckLoader import load
-from keras.layers import Dense, GlobalAveragePooling2D, Dropout, BatchNormalization, Input
+from keras.layers import Dense, GlobalAveragePooling2D, Dropout
 from keras.layers import Input
 from keras.layers.advanced_activations import LeakyReLU
 from keras.models import Model
@@ -13,12 +13,12 @@ nb_categories = 1510
 
 inputs = Input(x_batch.shape[1:])
 x = GlobalAveragePooling2D()(inputs)
-x = Dense(2048)(x)
+x = Dense(1024)(x)
 x = LeakyReLU()(x)
-x = Dropout(0.2)(x)
-x = Dense(2048)(x)
+x = Dropout(0.5)(x)
+x = Dense(1024)(x)
 x = LeakyReLU()(x)
-x = Dropout(0.2)(x)
+x = Dropout(0.5)(x)
 predictions = Dense(y_batch.shape[1], activation='softmax')(x)
 model = Model(input=inputs, output=predictions)
 
