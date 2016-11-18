@@ -8,7 +8,9 @@ def load(dir='bottleneck2/'):
     y = []
     files = listdir(dir)
     files = sorted(files)
-    for file in files:
+    count = len(files)
+    for i, file in enumerate(files):
+        print((i/count)*100)
         is_x = file.startswith('x')
         path = join(dir, file)
         arr = np.load(path)
@@ -18,3 +20,4 @@ def load(dir='bottleneck2/'):
             y.append(arr)
 
     return np.concatenate(x), np.concatenate(y)
+
