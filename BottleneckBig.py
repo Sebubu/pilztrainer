@@ -16,8 +16,7 @@ def get_username():
 
 
 #resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
-whole_resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
-resnet = Model(input=whole_resnet.input, output=whole_resnet.get_layer('activation_46').output)
+resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
 print("loaded Resnet")
 
 batch_size = 512
