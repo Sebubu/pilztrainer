@@ -13,17 +13,14 @@ nb_categories = 1510
 
 inputs = Input(x_batch.shape[1:])
 x = GlobalAveragePooling2D()(inputs)
-x = Dense(512)(x)
-x = LeakyReLU()(x)
-x = Dropout(0.5)(x)
-x = Dense(512)(x)
+x = Dense(750)(x)
 x = LeakyReLU()(x)
 x = Dropout(0.5)(x)
 predictions = Dense(y_batch.shape[1], activation='softmax')(x)
 model = Model(input=inputs, output=predictions)
 
 print('compile')
-model.compile(optimizer='adadelta',
+model.compile(optimizer='rmsprop',
               loss='categorical_crossentropy',
               metrics=['accuracy'])
 
