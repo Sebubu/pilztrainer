@@ -50,7 +50,7 @@ x = GlobalAveragePooling2D()(x)
 x = Dense(2048)(x)
 x = LeakyReLU()(x)
 x = Dropout(0.5)(x)
-predictions = Dense(nb_categories, activation='sigmoid')(x)
+predictions = Dense(nb_categories, activation='softmax')(x)
 model = Model(input=resnet.input, output=predictions)
 
 for layer in resnet.layers:
