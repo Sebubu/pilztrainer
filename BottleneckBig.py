@@ -44,7 +44,10 @@ train_datagen = ImageDataGenerator(
     height_shift_range=shift
 )
 '''
-train_datagen = ImageDataGenerator()
+train_datagen = ImageDataGenerator(
+    horizontal_flip=True,
+    vertical_flip=True,
+)
 
 
 train_generator = train_datagen.flow_from_directory(
@@ -52,6 +55,16 @@ train_generator = train_datagen.flow_from_directory(
     target_size=image_size,
     batch_size=batch_size,
     class_mode='categorical',
+    save_to_dir='aug/'
+)
+
+
+test_generator = train_datagen.flow_from_directory(
+    test_data_dir,
+    target_size=image_size,
+    batch_size=batch_size,
+    class_mode='categorical',
+    save_to_dir='aug/'
 )
 
 resnet.compile(loss='categorical_crossentropy',
@@ -62,8 +75,8 @@ print("Compiled")
 target = int(nb_train_data/batch_size)
 for i in range(0,target):
     print(i, "/", target)
-    x_train, y_train = train_generator.next()
+    x_train, y_train = test_generator.next()
     prediction = resnet.predict(x_train, batch_size)
     name = "i" + str(i)
-    np.save('bottleneck/x' + name + '.npy', prediction)
-    np.save('bottleneck/y' + name + '.npy', y_train)
+    np.save('bottleneck/x3' + name + '.npy', prediction)
+    np.save('bottleneck/y3' + name + '.npy', y_train)
