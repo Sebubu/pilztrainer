@@ -54,16 +54,14 @@ train_generator = train_datagen.flow_from_directory(
     train_data_dir,
     target_size=image_size,
     batch_size=batch_size,
-    class_mode='categorical',
-    save_to_dir='aug/'
+    class_mode='categorical'
 )
 
 test_generator = train_datagen.flow_from_directory(
     test_data_dir,
     target_size=image_size,
     batch_size=batch_size,
-    class_mode='categorical',
-    save_to_dir='aug/'
+    class_mode='categorical'
 )
 
 resnet.compile(loss='categorical_crossentropy',
