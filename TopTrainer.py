@@ -22,7 +22,7 @@ nb_categories = 1510
 
 inputs = Input(x_batch.shape[1:])
 x = GlobalAveragePooling2D()(inputs)
-x = Dense(1024, W_regularizer=l2(0.01), activity_regularizer=activity_l2(0.01))(x)
+x = Dense(1024, W_regularizer=l2(0.0001), activity_regularizer=activity_l2(0.0001))(x)
 x = LeakyReLU()(x)
 x = Dropout(0.6)(x)
 predictions = Dense(y_batch.shape[1], activation='softmax')(x)
