@@ -59,12 +59,11 @@ resnet.compile(loss='categorical_crossentropy',
               metrics=['accuracy'])
 print("Compiled")
 
-for run in range(0,15):
-    target = int(nb_train_data/batch_size)
-    for i in range(0,target):
-        print(i, "/", target)
-        x_train, y_train = train_generator.next()
-        prediction = resnet.predict(x_train, batch_size)
-        name = 'r' + str(run) + "i" + str(i)
-        np.save('bottleneck/x' + name + '.npy', prediction)
-        np.save('bottleneck/y' + name + '.npy', y_train)
+target = int(nb_train_data/batch_size)
+for i in range(0,target):
+    print(i, "/", target)
+    x_train, y_train = train_generator.next()
+    prediction = resnet.predict(x_train, batch_size)
+    name = "i" + str(i)
+    np.save('bottleneck/x' + name + '.npy', prediction)
+    np.save('bottleneck/y' + name + '.npy', y_train)
