@@ -4,7 +4,8 @@ from keras.layers import Input
 from keras.layers.advanced_activations import LeakyReLU
 from keras.models import Model
 from keras.callbacks import ModelCheckpoint, EarlyStopping
-from keras.metrics import categorical_accuracy
+from keras.regularizers import l2, activity_l2
+
 x_batch,y_batch = load()
 x_test,y_test = load('bottlenecktest/')
 
@@ -21,7 +22,7 @@ nb_categories = 1510
 
 inputs = Input(x_batch.shape[1:])
 x = GlobalAveragePooling2D()(inputs)
-x = Dense(1024)(x)
+x = Dense(1024, W_regularizer=l2(0.01), activity_regularizer=activity_l2(0.01))(x)
 x = LeakyReLU()(x)
 x = Dropout(0.6)(x)
 predictions = Dense(y_batch.shape[1], activation='softmax')(x)
