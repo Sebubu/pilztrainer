@@ -21,7 +21,7 @@ print("loaded Resnet")
 
 batch_size = 512
 test_batch_size = 128
-nb_train_data = 180000
+nb_train_data = 187639
 
 if get_username() == 'severin':
     train_data_dir = '/home/severin/PycharmProjects/pilztrainer/mushroom_dataset/train'
@@ -32,6 +32,7 @@ else:
 
 image_size = (224, 224)
 shift = 0.2
+'''
 train_datagen = ImageDataGenerator(
     rescale=1. / 255,
     shear_range=0.2,
@@ -42,15 +43,16 @@ train_datagen = ImageDataGenerator(
     width_shift_range=shift,
     height_shift_range=shift
 )
-
+'''
+train_datagen = ImageDataGenerator()
 
 
 train_generator = train_datagen.flow_from_directory(
     train_data_dir,
     target_size=image_size,
     batch_size=batch_size,
-    class_mode='categorical')
-
+    class_mode='categorical',
+)
 
 resnet.compile(loss='categorical_crossentropy',
               optimizer='adadelta',
@@ -58,8 +60,9 @@ resnet.compile(loss='categorical_crossentropy',
 print("Compiled")
 
 for run in range(0,15):
-    for i in range(0,nb_train_data/batch_size):
-        print(i)
+    target = int(nb_train_data/batch_size)
+    for i in range(0,target):
+        print(i, "/", target)
         x_train, y_train = train_generator.next()
         prediction = resnet.predict(x_train, batch_size)
         name = 'r' + str(run) + "i" + str(i)
