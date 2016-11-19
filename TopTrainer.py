@@ -21,9 +21,9 @@ nb_categories = 1510
 
 inputs = Input(x_batch.shape[1:])
 x = GlobalAveragePooling2D()(inputs)
-x = Dense(256)(x)
+x = Dense(512)(x)
 x = LeakyReLU()(x)
-x = Dropout(0.5)(x)
+x = Dropout(0.6)(x)
 predictions = Dense(y_batch.shape[1], activation='softmax')(x)
 model = Model(input=inputs, output=predictions)
 
