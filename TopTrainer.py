@@ -8,12 +8,12 @@ from keras.callbacks import ModelCheckpoint, EarlyStopping
 x_batch,y_batch = load()
 x_test,y_test = load('bottlenecktest/')
 
-print('train ', end="")
-print(x_batch.shape, end="")
+print('train ')
+print(x_batch.shape)
 print(y_batch.shape)
 
-print('test ', end="")
-print(x_test.shape, end="")
+print('test ')
+print(x_test.shape)
 print(y_test.shape)
 
 nb_categories = 1510
