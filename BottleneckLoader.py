@@ -10,6 +10,8 @@ def load(dir='bottleneck2/'):
     files = sorted(files)
     count = len(files)
     for i, file in enumerate(files):
+        if file.endswith('.txt'):
+            continue
         print(str(i) + "/" + str(count))
         is_x = file.startswith('x')
         path = join(dir, file)

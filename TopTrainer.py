@@ -6,8 +6,16 @@ from keras.models import Model
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 
 x_batch,y_batch = load()
-print(x_batch.shape)
+x_test,y_test = load('bottlenecktest/')
+
+print('train ', end="")
+print(x_batch.shape, end="")
 print(y_batch.shape)
+
+print('test ', end="")
+print(x_test.shape, end="")
+print(y_test.shape)
+
 nb_categories = 1510
 
 
@@ -30,4 +38,4 @@ callbacks = [ModelCheckpoint("weights/weight{epoch:02d}-{val_loss:.2f}.hdf5", mo
             ]
 
 print('fit')
-model.fit(x_batch, y_batch, batch_size=1028, nb_epoch=100,validation_split=0.1, shuffle=True)
+model.fit(x_batch, y_batch, batch_size=1028, nb_epoch=100,validation_split=0.1, shuffle=True, validation_data=(x_test,y_test))

@@ -58,7 +58,6 @@ train_generator = train_datagen.flow_from_directory(
     save_to_dir='aug/'
 )
 
-
 test_generator = train_datagen.flow_from_directory(
     test_data_dir,
     target_size=image_size,
@@ -72,11 +71,14 @@ resnet.compile(loss='categorical_crossentropy',
               metrics=['accuracy'])
 print("Compiled")
 
-target = int(nb_train_data/batch_size)
+
+generator = test_generator
+target = int(generator.nb_sample/batch_size)
+
 for i in range(0,target):
     print(i, "/", target)
-    x_train, y_train = test_generator.next()
+    x_train, y_train = generator.next()
     prediction = resnet.predict(x_train, batch_size)
     name = "i" + str(i)
-    np.save('bottleneck/x3' + name + '.npy', prediction)
-    np.save('bottleneck/y3' + name + '.npy', y_train)
+    np.save('bottlenecktest/x' + name + '.npy', prediction)
+    np.save('bottlenecktest/y' + name + '.npy', y_train)
