@@ -39,4 +39,4 @@ callbacks = [ModelCheckpoint("weights/weight{epoch:02d}-{val_loss:.2f}.hdf5", mo
             ]
 
 print('fit')
-model.fit(x_batch, y_batch, batch_size=128, nb_epoch=100, shuffle=True, validation_data=(x_test,y_test))
+model.fit(x_batch, y_batch, batch_size=2096, nb_epoch=100, shuffle=True, validation_data=(x_test,y_test))
