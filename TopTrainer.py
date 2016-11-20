@@ -22,9 +22,9 @@ nb_categories = 1510
 
 inputs = Input(x_batch.shape[1:])
 x = GlobalAveragePooling2D()(inputs)
-x = Dense(8192, W_regularizer=l2(0.001), activity_regularizer=activity_l2(0.001))(x)
+x = Dense(1024)(x)
 x = LeakyReLU()(x)
-x = Dropout(0.6)(x)
+x = Dropout(0.5)(x)
 predictions = Dense(y_batch.shape[1], activation='softmax')(x)
 model = Model(input=inputs, output=predictions)
 
@@ -39,4 +39,4 @@ callbacks = [ModelCheckpoint("weights/weight{epoch:02d}-{val_loss:.2f}.hdf5", mo
             ]
 
 print('fit')
-model.fit(x_batch, y_batch, batch_size=1028, nb_epoch=100,validation_split=0.1, shuffle=True, validation_data=(x_test,y_test))
+model.fit(x_batch, y_batch, batch_size=128, nb_epoch=100, shuffle=True, validation_data=(x_test,y_test))
