@@ -74,7 +74,7 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy', top_k_categorical_accuracy])
 print("Compiled")
 
-model.load_weights('weights/weights98l3.75292873383.hdf5')
+model.load_weights('weights/weights184l3.63248491287.hdf5')
 print('weights loaded')
 
 
