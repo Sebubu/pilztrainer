@@ -29,7 +29,7 @@ else:
     test_data_dir = '/home/ubuntu/mushroom_dataset/test'
 
 image_size = (224, 224)
-train_datagen = ImageDataGenerator()
+train_datagen = ImageDataGenerator(horizontal_flip=True, vertical_flip=True)
 
 
 test_datagen = ImageDataGenerator()
@@ -62,13 +62,19 @@ model = Model(input=resnet.input, output=predictions)
 for i, layer in enumerate(resnet.layers[:164]):
     layer.trainable = False
 
-#for i, layer in enumerate(resnet.layers):
-#    print(i, layer.name, '\t', layer.trainable)
+for i, layer in enumerate(resnet.layers):
+    trainable = False
+    if hasattr(layer, 'trainable'):
+        trainable = layer.trainable
+    print(i, layer.name, '\t', trainable)
 
 model.compile(loss='categorical_crossentropy',
               optimizer='adadelta',
               metrics=['accuracy'])
 print("Compiled")
+
+model.load_weights('weights/weights500Finito.hdf5')
+print('weights loaded')
 
 
 def printen(titel, result):
