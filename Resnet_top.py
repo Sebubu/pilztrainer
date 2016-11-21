@@ -68,13 +68,13 @@ for i, layer in enumerate(resnet.layers):
     if hasattr(layer, 'trainable'):
         trainable = layer.trainable
     print(i, layer.name, '\t', trainable)
-from keras.optimizers import Adadelta
+
 model.compile(loss='categorical_crossentropy',
-              optimizer=Adadelta(lr=0.1),
+              optimizer="rmsprop",
               metrics=['accuracy', top_k_categorical_accuracy])
 print("Compiled")
 
-model.load_weights('weights/weights184l3.63248491287.hdf5')
+model.load_weights('weights/weights39l3.56438326836.hdf5')
 print('weights loaded')
 
 
