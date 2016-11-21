@@ -7,6 +7,7 @@ from keras.models import Model
 from datetime import datetime
 import os
 import pwd
+from keras.metrics import top_k_categorical_accuracy
 
 
 
@@ -69,8 +70,8 @@ for i, layer in enumerate(resnet.layers):
     print(i, layer.name, '\t', trainable)
 from keras.optimizers import Adadelta
 model.compile(loss='categorical_crossentropy',
-              optimizer=Adadelta(lr=0.5),
-              metrics=['accuracy'])
+              optimizer=Adadelta(lr=0.1),
+              metrics=['accuracy', top_k_categorical_accuracy])
 print("Compiled")
 
 model.load_weights('weights/weights98l3.75292873383.hdf5')
@@ -80,7 +81,8 @@ print('weights loaded')
 def printen(titel, result):
     loss = result[0]
     acc = result[1]
-    print("\t" + titel + " loss " + str(loss) + ", acc " + str(acc))
+    top_5 = result[2]
+    print("\t" + titel + " loss " + str(loss) + ", acc " + str(acc) + ", top5 " + str(top_5))
 
 loss = 100
 for i in range(0, 500):
