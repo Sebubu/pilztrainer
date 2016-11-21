@@ -62,8 +62,8 @@ model = Model(input=resnet.input, output=predictions)
 for i, layer in enumerate(resnet.layers[:164]):
     layer.trainable = False
 
-for i, layer in enumerate(resnet.layers):
-    print(i, layer.name, '\t', layer.trainable)
+#for i, layer in enumerate(resnet.layers):
+#    print(i, layer.name, '\t', layer.trainable)
 
 model.compile(loss='categorical_crossentropy',
               optimizer='adadelta',
