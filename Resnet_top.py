@@ -7,7 +7,7 @@ from keras.models import Model
 import os
 import pwd
 from keras.metrics import top_k_categorical_accuracy
-from keras.callbacks import ModelCheckpoint, EarlyStopping
+from keras.callbacks import ModelCheckpoint
 
 def topx(k):
     def topfunc(y_true, y_pred, k=k):
@@ -23,7 +23,7 @@ resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shap
 print("loaded Resnet")
 
 batch_size = 512
-test_batch_size = 128
+test_batch_size = 256
 
 if get_username() == 'severin':
     train_data_dir = '/home/severin/PycharmProjects/pilztrainer/mushroom_dataset/train'
@@ -78,7 +78,7 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy', topx(3), topx(5)])
 print("Compiled")
 
-model.load_weights('weights/weights106l3.48274302483.hdf5')
+model.load_weights('weights/xWeight90-3.39.hdf5')
 print('weights loaded')
 
 callbacks = [ModelCheckpoint("weights/xWeight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=0,
@@ -86,7 +86,7 @@ callbacks = [ModelCheckpoint("weights/xWeight{epoch:02d}-{val_loss:.2f}.hdf5", m
             ]
 
 
-model.fit_generator(train_generator,samples_per_epoch=batch_size*10 , nb_epoch=100,
+model.fit_generator(train_generator,samples_per_epoch=batch_size*10 , nb_epoch=500,
                     validation_data=validation_generator,nb_val_samples=test_batch_size*10,
                     callbacks=callbacks)
 

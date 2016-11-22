@@ -18,17 +18,14 @@ def create_temp_dataset(mushroom_name):
     copy_tree(mush_path, target_dir)
 
 
-def generate(amount=32):
+def generate(amount=16):
     image_size = (224,224)
     shift=0.2
 
     train_datagen = ImageDataGenerator(
-        rescale=1. / 255,
-        shear_range=0.2,
+        #shear_range=0.2,
         zoom_range=0.2,
-        horizontal_flip=True,
-        vertical_flip=True,
-        rotation_range=90,
+        #rotation_range=90,
         width_shift_range=shift,
         height_shift_range=shift
     )
