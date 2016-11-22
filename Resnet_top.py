@@ -31,7 +31,7 @@ else:
     train_data_dir = '/home/ubuntu/mushroom_dataset/train'
     test_data_dir = '/home/ubuntu/mushroom_dataset/test'
 
-shift_range = 0.1
+shift_range = 0.2
 
 image_size = (224, 224)
 train_datagen = ImageDataGenerator(
