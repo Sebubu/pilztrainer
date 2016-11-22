@@ -9,7 +9,9 @@ import os
 import pwd
 from keras.metrics import top_k_categorical_accuracy
 
-
+def top3(y_true, y_pred):
+    k=3
+    return top_k_categorical_accuracy(y_true,y_pred, k)
 
 
 def get_username():
@@ -20,7 +22,7 @@ resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shap
 print("loaded Resnet")
 
 batch_size = 512
-test_batch_size = 128
+test_batch_size = 512
 
 if get_username() == 'severin':
     train_data_dir = '/home/severin/PycharmProjects/pilztrainer/mushroom_dataset/train'
@@ -68,14 +70,18 @@ for i, layer in enumerate(resnet.layers):
     if hasattr(layer, 'trainable'):
         trainable = layer.trainable
     print(i, layer.name, '\t', trainable)
+
 from keras.optimizers import Adadelta
 model.compile(loss='categorical_crossentropy',
               optimizer=Adadelta(lr=0.001),
-              metrics=['accuracy', top_k_categorical_accuracy])
+              metrics=['accuracy', top_k_categorical_accuracy, top3])
 print("Compiled")
 
-model.load_weights('weights/weights39l3.56438326836.hdf5')
+model.load_weights('weights/weights106l3.48274302483.hdf5')
 print('weights loaded')
+
+
+model.fit_generator(train_generator, train_generator.nb_sample, nb_epoch=100,validation_data=validation_generator,nb_val_samples=validation_generator.nb_sample)
 
 
 def printen(titel, result):
