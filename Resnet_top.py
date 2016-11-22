@@ -31,8 +31,16 @@ else:
     train_data_dir = '/home/ubuntu/mushroom_dataset/train'
     test_data_dir = '/home/ubuntu/mushroom_dataset/test'
 
+shift_range = 0.1
+
 image_size = (224, 224)
-train_datagen = ImageDataGenerator(horizontal_flip=True, vertical_flip=True)
+train_datagen = ImageDataGenerator(
+    horizontal_flip=True,
+    vertical_flip=True,
+    width_shift_range=shift_range,
+    height_shift_range=shift_range,
+    #zoom_range=0.2
+)
 
 
 test_datagen = ImageDataGenerator()
@@ -77,7 +85,7 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy', topx(3), topx(5)])
 print("Compiled")
 
-model.load_weights('weights/xWeight98-3.32.hdf5')
+model.load_weights('weights/xWeight01-3.31.hdf5')
 print('weights loaded')
 
 callbacks = [ModelCheckpoint("weights/xWeight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=0,
@@ -85,8 +93,8 @@ callbacks = [ModelCheckpoint("weights/xWeight{epoch:02d}-{val_loss:.2f}.hdf5", m
             ]
 
 
-model.fit_generator(train_generator,samples_per_epoch=train_generator.nb_sample , nb_epoch=500,
-                    validation_data=validation_generator,nb_val_samples=validation_generator.nb_sample,
+model.fit_generator(train_generator,samples_per_epoch=batch_size*20 , nb_epoch=500,
+                    validation_data=validation_generator,nb_val_samples=batch_size*10,
                     callbacks=callbacks)
 
 model.save_weights('weights/finishe.hdf5')
