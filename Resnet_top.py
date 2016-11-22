@@ -63,7 +63,7 @@ x = Dropout(0.5)(x)
 predictions = Dense(nb_categories, activation='softmax')(x)
 model = Model(input=resnet.input, output=predictions)
 
-for i, layer in enumerate(resnet.layers[:164]):
+for i, layer in enumerate(resnet.layers[:153]):
     layer.trainable = False
 
 for i, layer in enumerate(resnet.layers):
