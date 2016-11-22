@@ -8,11 +8,13 @@ from datetime import datetime
 import os
 import pwd
 from keras.metrics import top_k_categorical_accuracy
+from keras.callbacks import ModelCheckpoint, EarlyStopping
 
-def top3(y_true, y_pred):
-    k=3
-    return top_k_categorical_accuracy(y_true,y_pred, k)
-
+def topx(k):
+    def topfunc(y_true, y_pred, k=k):
+        return top_k_categorical_accuracy(y_true, y_pred, k)
+    topfunc.__name__ = "top" + str(k)
+    return topfunc
 
 def get_username():
     return pwd.getpwuid(os.getuid())[0]
@@ -22,7 +24,7 @@ resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shap
 print("loaded Resnet")
 
 batch_size = 512
-test_batch_size = 512
+test_batch_size = 128
 
 if get_username() == 'severin':
     train_data_dir = '/home/severin/PycharmProjects/pilztrainer/mushroom_dataset/train'
@@ -74,48 +76,20 @@ for i, layer in enumerate(resnet.layers):
 from keras.optimizers import Adadelta
 model.compile(loss='categorical_crossentropy',
               optimizer=Adadelta(lr=0.001),
-              metrics=['accuracy', top_k_categorical_accuracy, top3])
+              metrics=['accuracy', topx(3), topx(5)])
 print("Compiled")
 
 model.load_weights('weights/weights106l3.48274302483.hdf5')
 print('weights loaded')
 
+callbacks = [ModelCheckpoint("weights/xWeight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=1,
+                           save_best_only=True, save_weights_only=True, mode='auto')
+            ]
 
-model.fit_generator(train_generator, train_generator.nb_sample, nb_epoch=100,validation_data=validation_generator,nb_val_samples=validation_generator.nb_sample)
+
+model.fit_generator(train_generator,samples_per_epoch=batch_size*10 , nb_epoch=100,
+                    validation_data=validation_generator,nb_val_samples=test_batch_size*10,
+                    callbacks=callbacks)
 
 
-def printen(titel, result):
-    loss = result[0]
-    acc = result[1]
-    top_5 = result[2]
-    print("\t" + titel + " loss " + str(loss) + ", acc " + str(acc) + ", top5 " + str(top_5))
 
-loss = 100
-for i in range(0, 500):
-    print('')
-    start = datetime.now()
-    print("Epoche " + str(i))
-    x_train, y_train = train_generator.next()
-    x_test, y_test = validation_generator.next()
-
-    train_results = model.train_on_batch(x_train, y_train)
-    printen("train", train_results)
-
-    test = model.test_on_batch(x_test, y_test)
-    printen("test", test)
-
-    end = datetime.now()
-    eta = end-start
-    print("\t" + str(eta.seconds) + " seconds")
-
-    test_loss = test[0]
-    if loss > test_loss:
-        print("\tsave model...")
-        loss = test_loss
-        model.save_weights('weights/weights' + str(i) + 'l' + str(test_loss) + '.hdf5')
-
-    if i % 20 == 0:
-        print("\tsave model after 20 epoches...")
-        model.save_weights('weights/weights' + str(i) + 'l' + str(test_loss) + '.hdf5')
-
-model.save_weights('weights/weights500Finito.hdf5')
