@@ -90,5 +90,7 @@ model.fit_generator(train_generator,samples_per_epoch=batch_size*10 , nb_epoch=5
                     validation_data=validation_generator,nb_val_samples=test_batch_size*10,
                     callbacks=callbacks)
 
+model.save_weights('weights/finishe.hdf5')
+
 
 
