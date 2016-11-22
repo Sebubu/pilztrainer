@@ -4,7 +4,6 @@ from keras.layers import Input
 from keras.layers.advanced_activations import LeakyReLU
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Model
-from datetime import datetime
 import os
 import pwd
 from keras.metrics import top_k_categorical_accuracy
@@ -48,7 +47,7 @@ train_generator = train_datagen.flow_from_directory(
 validation_generator = test_datagen.flow_from_directory(
     test_data_dir,
     target_size=image_size,
-    batch_size=test_batch_size,
+    batch_size=batch_size,
     class_mode='categorical')
 
 class_dictionary = validation_generator.class_indices
