@@ -74,7 +74,7 @@ for i, layer in enumerate(resnet.layers):
 
 from keras.optimizers import Adadelta
 model.compile(loss='categorical_crossentropy',
-              optimizer=Adadelta(lr=0.01),
+              optimizer=Adadelta(lr=1),
               metrics=['accuracy', topx(3), topx(5)])
 print("Compiled")
 
