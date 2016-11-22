@@ -74,14 +74,14 @@ for i, layer in enumerate(resnet.layers):
 
 from keras.optimizers import Adadelta
 model.compile(loss='categorical_crossentropy',
-              optimizer=Adadelta(lr=0.001),
+              optimizer=Adadelta(lr=0.01),
               metrics=['accuracy', topx(3), topx(5)])
 print("Compiled")
 
 model.load_weights('weights/weights106l3.48274302483.hdf5')
 print('weights loaded')
 
-callbacks = [ModelCheckpoint("weights/xWeight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=1,
+callbacks = [ModelCheckpoint("weights/xWeight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=0,
                            save_best_only=True, save_weights_only=True, mode='auto')
             ]
 
