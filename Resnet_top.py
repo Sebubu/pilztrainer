@@ -22,7 +22,7 @@ def get_username():
 resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
 print("loaded Resnet")
 
-batch_size = 512
+batch_size = 256
 
 if get_username() == 'severin':
     train_data_dir = '/home/severin/PycharmProjects/pilztrainer/mushroom_dataset/train'
@@ -88,7 +88,7 @@ for i, layer in enumerate(resnet.layers):
 
 from keras.optimizers import Adadelta
 model.compile(loss='categorical_crossentropy',
-              optimizer=Adadelta(lr=1),
+              optimizer=Adadelta(lr=0.5),
               metrics=['accuracy', topx(3), topx(5)])
 print("Compiled")
 
