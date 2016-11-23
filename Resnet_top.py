@@ -79,7 +79,7 @@ layer -3: 141
 layer -4: 131
 '''
 
-for i, layer in enumerate(resnet.layers[:153]):
+for i, layer in enumerate(resnet.layers[:141]):
     layer.trainable = False
 
 for i, layer in enumerate(resnet.layers):
@@ -94,7 +94,7 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy', topx(3), topx(5)])
 print("Compiled")
 
-model.load_weights('weights/xxWeight81-2.76.hdf5')
+model.load_weights('weights/xxWeight05-2.89.hdf5')
 print('weights loaded')
 
 callbacks = [ModelCheckpoint("weights/xxWeight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=0,
