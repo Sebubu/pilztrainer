@@ -99,8 +99,8 @@ callbacks = [ModelCheckpoint("weights/xxWeight{epoch:02d}-{val_loss:.2f}.hdf5", 
             ]
 
 
-model.fit_generator(train_generator,samples_per_epoch=batch_size*20 , nb_epoch=500,
-                    validation_data=validation_generator,nb_val_samples=batch_size*10,
+model.fit_generator(train_generator,samples_per_epoch=batch_size*20, nb_epoch=500,
+                    validation_data=validation_generator,nb_val_samples=batch_size*4,
                     callbacks=callbacks)
 
 model.save_weights('weights/finishe.hdf5')
