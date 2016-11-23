@@ -92,7 +92,7 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy', topx(3), topx(5)])
 print("Compiled")
 
-model.load_weights('weights/xxWeight75-2.83.hdf5')
+model.load_weights('weights/xxWeight81-2.76.hdf5')
 print('weights loaded')
 
 callbacks = [ModelCheckpoint("weights/xxWeight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=0,
