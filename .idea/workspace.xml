@@ -121,8 +121,8 @@
       <file leaf-file-name="Resnet_top.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Resnet_top.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+            <state relative-caret-position="330">
+              <caret line="97" column="110" selection-start-line="97" selection-start-column="110" selection-end-line="97" selection-end-column="110" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -1021,8 +1021,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resnet_top.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+        <state relative-caret-position="330">
+          <caret line="97" column="110" selection-start-line="97" selection-start-column="110" selection-end-line="97" selection-end-column="110" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>

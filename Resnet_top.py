@@ -22,7 +22,7 @@ def get_username():
 resnet = ResNet50(include_top=False, weights='imagenet', input_tensor=Input(shape=(3, 224, 224)))
 print("loaded Resnet")
 
-batch_size = 256
+batch_size = 512
 
 if get_username() == 'severin':
     train_data_dir = '/home/severin/PycharmProjects/pilztrainer/mushroom_dataset/train'
@@ -77,7 +77,7 @@ layer -3: 141
 layer -4: 131
 '''
 
-for i, layer in enumerate(resnet.layers[:131]):
+for i, layer in enumerate(resnet.layers[:153]):
     layer.trainable = False
 
 for i, layer in enumerate(resnet.layers):
@@ -88,7 +88,7 @@ for i, layer in enumerate(resnet.layers):
 
 from keras.optimizers import Adadelta
 model.compile(loss='categorical_crossentropy',
-              optimizer=Adadelta(lr=0.5),
+              optimizer=Adadelta(lr=1),
               metrics=['accuracy', topx(3), topx(5)])
 print("Compiled")
 
@@ -100,8 +100,8 @@ callbacks = [ModelCheckpoint("weights/xxWeight{epoch:02d}-{val_loss:.2f}.hdf5", 
             ]
 
 
-model.fit_generator(train_generator,samples_per_epoch=batch_size*20, nb_epoch=500,
-                    validation_data=validation_generator,nb_val_samples=batch_size*8,
+model.fit_generator(train_generator,samples_per_epoch=batch_size*10, nb_epoch=500,
+                    validation_data=validation_generator,nb_val_samples=batch_size*4,
                     callbacks=callbacks)
 
 model.save_weights('weights/finishe.hdf5')
