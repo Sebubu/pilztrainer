@@ -9,11 +9,13 @@ import pwd
 from keras.metrics import top_k_categorical_accuracy
 from keras.callbacks import ModelCheckpoint
 
+
 def topx(k):
     def topfunc(y_true, y_pred, k=k):
         return top_k_categorical_accuracy(y_true, y_pred, k)
     topfunc.__name__ = "top" + str(k)
     return topfunc
+
 
 def get_username():
     return pwd.getpwuid(os.getuid())[0]
@@ -100,8 +102,8 @@ callbacks = [ModelCheckpoint("weights/xxWeight{epoch:02d}-{val_loss:.2f}.hdf5", 
             ]
 
 
-model.fit_generator(train_generator,samples_per_epoch=batch_size*10, nb_epoch=500,
-                    validation_data=validation_generator,nb_val_samples=batch_size*4,
+model.fit_generator(train_generator,samples_per_epoch=batch_size*20, nb_epoch=500,
+                    validation_data=validation_generator,nb_val_samples=batch_size*10,
                     callbacks=callbacks)
 
 model.save_weights('weights/finishe.hdf5')
