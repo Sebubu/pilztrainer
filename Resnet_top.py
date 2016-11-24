@@ -72,14 +72,14 @@ x = Dropout(0.5)(x)
 predictions = Dense(nb_categories, activation='softmax')(x)
 model = Model(input=resnet.input, output=predictions)
 
-'''
-layer -1: 163
-layer -2: 153
-layer -3: 141
-layer -4: 131
-'''
+layer = {
+    1: 163,
+    2: 153,
+    3: 141,
+    4: 131
+}
 
-for i, layer in enumerate(resnet.layers[:153]):
+for i, layer in enumerate(resnet.layers[:layer[1]]):
     layer.trainable = False
 
 for i, layer in enumerate(resnet.layers):
@@ -94,7 +94,7 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy', topx(3), topx(5)])
 print("Compiled")
 
-model.load_weights('weights/xxWeight05-2.89.hdf5')
+model.load_weights('weights/x2layerWeight14-3.22.hdf5')
 print('weights loaded')
 
 callbacks = [ModelCheckpoint("weights/xxWeight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=0,

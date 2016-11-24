@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ced99526-bc75-4153-8e6f-20b8866ba41c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resnet_top.py" afterPath="$PROJECT_DIR$/Resnet_top.py" />
     </list>
     <ignored path="pilztrainer.iws" />
@@ -122,8 +121,8 @@
       <file leaf-file-name="Resnet_top.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Resnet_top.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="84" column="41" selection-start-line="84" selection-start-column="41" selection-end-line="84" selection-end-column="41" />
+            <state relative-caret-position="411">
+              <caret line="94" column="17" selection-start-line="94" selection-start-column="17" selection-end-line="94" selection-end-column="17" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -1022,8 +1021,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resnet_top.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="84" column="41" selection-start-line="84" selection-start-column="41" selection-end-line="84" selection-end-column="41" />
+        <state relative-caret-position="411">
+          <caret line="94" column="17" selection-start-line="94" selection-start-column="17" selection-end-line="94" selection-end-column="17" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
