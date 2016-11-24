@@ -79,7 +79,7 @@ layer -3: 141
 layer -4: 131
 '''
 
-for i, layer in enumerate(resnet.layers[:141]):
+for i, layer in enumerate(resnet.layers[:153]):
     layer.trainable = False
 
 for i, layer in enumerate(resnet.layers):
