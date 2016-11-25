@@ -79,7 +79,7 @@ layer = {
     4: 131
 }
 
-for i, layer in enumerate(resnet.layers[:layer[1]]):
+for i, layer in enumerate(resnet.layers[:layer[2]]):
     layer.trainable = False
 
 for i, layer in enumerate(resnet.layers):
@@ -88,18 +88,17 @@ for i, layer in enumerate(resnet.layers):
         trainable = layer.trainable
     print(i, layer.name, '\t', trainable)
 
-from keras.optimizers import Adadelta
+
 model.compile(loss='categorical_crossentropy',
-              optimizer=Adadelta(lr=1),
+              optimizer='adadelta',
               metrics=['accuracy', topx(3), topx(5)])
 print("Compiled")
 
 model.load_weights('weights/1lWeight06-3.07.hdf5')
 print('weights loaded')
 
-callbacks = [ModelCheckpoint("weights/1Weight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=0,
-                           save_best_only=True, save_weights_only=True, mode='auto')
-            ]
+callbacks = [ModelCheckpoint("weights/2Weight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=0,
+                           save_best_only=True, save_weights_only=True, mode='auto')]
 
 
 model.fit_generator(train_generator,samples_per_epoch=batch_size*40, nb_epoch=500,
