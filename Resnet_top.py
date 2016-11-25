@@ -33,14 +33,14 @@ else:
     train_data_dir = '/home/ubuntu/mushroom_dataset/train'
     test_data_dir = '/home/ubuntu/mushroom_dataset/test'
 
-shift_range = 0.1
+shift_range = 0.2
 
 image_size = (224, 224)
 train_datagen = ImageDataGenerator(
     horizontal_flip=True,
     vertical_flip=True,
-    #width_shift_range=shift_range,
-    #height_shift_range=shift_range,
+    width_shift_range=shift_range,
+    height_shift_range=shift_range,
     #zoom_range=0.2
 )
 
@@ -94,10 +94,10 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy', topx(3), topx(5)])
 print("Compiled")
 
-model.load_weights('weights/x2layerWeight14-3.22.hdf5')
+model.load_weights('weights/1lWeight06-3.07.hdf5')
 print('weights loaded')
 
-callbacks = [ModelCheckpoint("weights/xxWeight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=0,
+callbacks = [ModelCheckpoint("weights/1Weight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=0,
                            save_best_only=True, save_weights_only=True, mode='auto')
             ]
 
