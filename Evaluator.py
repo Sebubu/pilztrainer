@@ -109,7 +109,7 @@ for i, data in enumerate(validation_generator):
     count(x_t, y_t)
     print((float(nb_positiv)/(nb_positiv + nb_negativ))*100, "%")
     #print(results)
-    if i > nb_iterations:
+    if i >= nb_iterations:
         break
 
 

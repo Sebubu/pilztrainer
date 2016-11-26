@@ -84,21 +84,21 @@ for i, layer in enumerate(resnet.layers[:layer[3]]):
 
 for i, layer in enumerate(resnet.layers):
     trainable = False
-    if hasattr(layer, 'train    able'):
+    if hasattr(layer, 'trainable'):
         trainable = layer.trainable
     print(i, layer.name, '\t', trainable)
 
 
-from keras.optimizers import SGD
+from keras.optimizers import Adadelta
 model.compile(loss='categorical_crossentropy',
-              optimizer=SGD(lr=1e-4, momentum=0.9),
+              optimizer=Adadelta(lr=0.1),
               metrics=['accuracy', topx(3), topx(5)])
 print("Compiled")
 
-model.load_weights('weights/xxWeight05-2.89.hdf5')
+model.load_weights('weights/2Weight31-2.71.hdf5')
 print('weights loaded')
 
-callbacks = [ModelCheckpoint("weights/2Weight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=0,
+callbacks = [ModelCheckpoint("weights/longWeight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=0,
                            save_best_only=True, save_weights_only=True, mode='auto')]
 
 
