@@ -107,7 +107,7 @@ for i, data in enumerate(validation_generator):
     x_t, y_t = data
     print(i, "/", nb_iterations)
     count(x_t, y_t)
-    print((nb_positiv/(nb_positiv + nb_negativ))*100, "%")
+    print((float(nb_positiv)/(nb_positiv + nb_negativ))*100, "%")
     #print(results)
     if i > nb_iterations:
         break
@@ -115,6 +115,6 @@ for i, data in enumerate(validation_generator):
 
 print(results)
 print(no_match)
-print((nb_positiv/(nb_positiv + nb_negativ))*100, "%")
+print((float(nb_positiv)/(nb_positiv + nb_negativ))*100, "%")
 
 
