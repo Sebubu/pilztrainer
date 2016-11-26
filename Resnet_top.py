@@ -82,12 +82,6 @@ layer = {
 for i, layer in enumerate(resnet.layers[:layer[3]]):
     layer.trainable = False
 
-for i, layer in enumerate(resnet.layers):
-    trainable = False
-    if hasattr(layer, 'trainable'):
-        trainable = layer.trainable
-    print(i, layer.name, '\t', trainable)
-
 
 from keras.optimizers import Adadelta
 model.compile(loss='categorical_crossentropy',
