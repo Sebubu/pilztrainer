@@ -21,9 +21,11 @@ batch_size = 8
 if get_username() == 'severin':
     train_data_dir = '/home/severin/PycharmProjects/pilztrainer/mushroom_dataset/train'
     test_data_dir = '/home/severin/PycharmProjects/pilztrainer/mushroom_dataset/test'
+    batch_size = 8
 else:
     train_data_dir = '/home/ubuntu/mushroom_dataset/train'
     test_data_dir = '/home/ubuntu/mushroom_dataset/test'
+    batch_size = 512
 
 image_size = (224, 224)
 
@@ -105,7 +107,7 @@ for i, data in enumerate(validation_generator):
     x_t, y_t = data
     print(i, "/", nb_iterations)
     count(x_t, y_t)
-    print(nb_positiv/(nb_positiv + nb_negativ), "%")
+    print((nb_positiv/(nb_positiv + nb_negativ))*100, "%")
     #print(results)
     if i > nb_iterations:
         break
@@ -113,6 +115,6 @@ for i, data in enumerate(validation_generator):
 
 print(results)
 print(no_match)
-print(nb_positiv/(nb_positiv + nb_negativ), "%")
+print((nb_positiv/(nb_positiv + nb_negativ))*100, "%")
 
 
