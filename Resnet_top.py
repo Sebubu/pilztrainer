@@ -39,8 +39,8 @@ image_size = (224, 224)
 train_datagen = ImageDataGenerator(
     horizontal_flip=True,
     vertical_flip=True,
-    width_shift_range=shift_range,
-    height_shift_range=shift_range,
+    #width_shift_range=shift_range,
+    #height_shift_range=shift_range,
     #zoom_range=0.2
 )
 
@@ -79,7 +79,7 @@ layer = {
     4: 131
 }
 
-for i, layer in enumerate(resnet.layers[:layer[3]]):
+for i, layer in enumerate(resnet.layers[:layer[4]]):
     layer.trainable = False
 
 
