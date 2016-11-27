@@ -39,8 +39,8 @@ image_size = (224, 224)
 train_datagen = ImageDataGenerator(
     horizontal_flip=True,
     vertical_flip=True,
-    #width_shift_range=shift_range,
-    #height_shift_range=shift_range,
+    width_shift_range=shift_range,
+    height_shift_range=shift_range,
     #zoom_range=0.2
 )
 
@@ -89,7 +89,7 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy', topx(3), topx(5)])
 print("Compiled")
 
-model.load_weights('weights/2Weight31-2.71.hdf5')
+model.load_weights('weights/longWeight22-2.65.hdf5')
 print('weights loaded')
 
 callbacks = [ModelCheckpoint("weights/longWeight{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_loss', verbose=0,
