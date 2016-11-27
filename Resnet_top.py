@@ -76,11 +76,13 @@ layer = {
     1: 163,
     2: 153,
     3: 141,
-    4: 131
+    4: 131,
+    5: 121
 }
 
-for i, layer in enumerate(resnet.layers[:layer[4]]):
+for i, layer in enumerate(resnet.layers[:layer[5]]):
     layer.trainable = False
+    print(i, layer.name)
 
 
 from keras.optimizers import Adadelta
